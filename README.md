@@ -1,6 +1,6 @@
 # NYC Taxi Trips-Fabric Project
 
-### Overview
+### <Overview>
 
 In this project we will orchestrate the movement of NYC Taxi Trips raw data, starting from landing data into lakehouse to creating semantic models and visualizations using cleaned, transformed data from data warehouse presentation layer.
 
