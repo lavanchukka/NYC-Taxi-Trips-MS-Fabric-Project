@@ -1,4 +1,4 @@
-# NYC-Taxi-MS-Fabric-Project
+# NYC-Taxi-Trips-Fabric-Project
 
 ## Overview
 
