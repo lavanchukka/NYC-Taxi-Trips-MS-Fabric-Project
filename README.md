@@ -6,5 +6,6 @@ In this project we will orchestrate the movement of NYC taxi Trips raw data, sta
 
 Dataset includes following fields: pickup and drop-off dates/times, pickup and drop-off locations, trip distances, itemized fares, rate types, payment types, and driver-reported passenger counts (check data dictionary for more details).
 
-<img width="1642" height="756" alt="NYC Taxi Data Architecture" src="https://github.com/user-attachments/assets/3a2db21f-6e0c-49be-b10b-48e728eae6fa" />
+
+<img width="1598" height="600" alt="NYC Taxi Data Architecture" src="https://github.com/user-attachments/assets/32404445-ef48-42e3-a4a4-a39ac0dbf7dd" />
 
