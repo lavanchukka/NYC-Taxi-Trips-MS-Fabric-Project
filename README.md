@@ -13,3 +13,7 @@ In this project we will orchestrate the movement of NYC taxi Trips raw data, sta
 
 <img width="1593" height="594" alt="NYC Taxi Data Architecture" src="https://github.com/user-attachments/assets/4a1d1a14-ee67-4066-ad6e-7ef8f468a9d7" />
 
+
+
+### Project Details
+
