@@ -1,5 +1,3 @@
-Azure PySpark Azure Data Factory Azure Synapse Python Databricks PowerBI Git
-
 # NYC Taxi Trips-Fabric Project
 
 ### <ins>Overview</ins>
