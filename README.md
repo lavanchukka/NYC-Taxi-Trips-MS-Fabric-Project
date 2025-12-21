@@ -1,4 +1,4 @@
-# NYC Taxi Trips-Fabric Project
+# NYC Taxi Trips - MS Fabric Project
 ![MSFabric](https://img.shields.io/badge/MS%20Fabric-Data%20Engineer-lightgreen)
 ![MSFabric](https://img.shields.io/badge/Dataflows%20Gen2-blue)
 ![MSFabric](https://img.shields.io/badge/Pipelines-grey)
