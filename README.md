@@ -189,7 +189,7 @@ from dbo.pres_nyc_taxi_data;
 
 
     
-### **<ins>Orchestrate through stored procedure</ins>**
+### **<ins>Replace dataflow with stored procedure</ins>**
 
 
 20)	Now replace the dataflow in (pres_nyc_dataprocessing_pl) pipeline with stored procedure to increase the efficiency.
