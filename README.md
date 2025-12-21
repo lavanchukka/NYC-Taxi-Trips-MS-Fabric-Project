@@ -57,6 +57,7 @@ DELETE from staging.nyc_taxi_data WHERE tpep_pickup_datetime <@startdate or tpep
 
 
 6)	Now go back to nyc_data staging pipeline and add a stored procedure to the pipeline upon on success and configure it. Click on import stored procedure parameters.
+
    
 7)	Add set variables activity and create dynamic end date v_end_date using addToTime function: 
 
@@ -69,8 +70,10 @@ DELETE from staging.nyc_taxi_data WHERE tpep_pickup_datetime <@startdate or tpep
    ii) Set the start date in stored procedure as: @concat(variables('v_file_date'), '-01')
 
    iii) Now change the destination in copy activity to use existing table and run the pipeline.
+   
 
 8)	Next create a metadata schema and create table metadata.processing_log
+
    
 9)	Create a stored procedure to insert into the table:
 
