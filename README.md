@@ -19,7 +19,7 @@ In this project we will orchestrate the movement of NYC Taxi Trips raw data, sta
 
 1)	Load NYC Taxi Trip records data and nyc_lookup_table data into Lakehouse which acts as storage layer for landing the raw data in the parquet format with each file containing 1 month of data.
 
-### **Staging layer**
+### **<ins>Staging layer</ins>**
 
 2)	Create a pipeline staging_lookup_table and use Data Factory copy data activity, configure up the source (Lakehouse) and sink (Warehouse) settings and ingest lookup table data into staging layer schema as table in Datawarehouse.
 
@@ -30,7 +30,7 @@ In this project we will orchestrate the movement of NYC Taxi Trips raw data, sta
 ```
 
 
-  now in sink configure and load the file into data warehouse as new table under staging schema(nyc_taxi_data).
+ now in sink configure and load the file into data warehouse as new table under staging schema(nyc_taxi_data).
 
 4)	When you query for the max and min tpep_pickup_datetime, you notice results contain date from 2024, and Feb of 2025, but the query should only contain dates for Jan of 2025.
      ```
@@ -54,11 +54,11 @@ DELETE from staging.nyc_taxi_data WHERE tpep_pickup_datetime <@startdate or tpep
 
 ```@addToTime(concat(variables('v_file_date'),'-01'), 1,'month')```
 
-Set the end date in stored procedure as v_end_date
+   i) Set the end date in stored procedure as v_end_date
 
-Set the start date in stored procedure as: @concat(variables('v_file_date'), '-01')
+   ii) Set the start date in stored procedure as: @concat(variables('v_file_date'), '-01')
 
-Now change the destination in copy activity to use existing table and run the pipeline.
+   iii) Now change the destination in copy activity to use existing table and run the pipeline.
 
 8)	Next create a metadata schema and create table metadata.processing_log
    
@@ -104,14 +104,19 @@ order by latest_processed_pickup Desc;
 ```
 
 
- 
+<img width="975" height="368" alt="image" src="https://github.com/user-attachments/assets/73386dd8-760a-452e-a9ac-87906a3ce1b0" />
 
+ 
 
 
 
 13)	Next use Dataflow gen2 to perform cleansing and transformations on taxi zone lookup and taxi data tables from staging layer.
     
-14)	Create a dbo.pres_nyc_taxi_data table:
+
+### **<ins>Presentation Layer</ins>**
+   	
+    
+15)	Create a dbo.pres_nyc_taxi_data table:
 
 ```
 CREATE table dbo.pres_nyc_taxi_data
@@ -133,6 +138,11 @@ total_amount FLOAT
 15)	Now create a dataflow pres_nyctaxi_processing_dfl2 -> add source-> warehouse, select nyc_taxi_data and perform cleaning and transformations on the table.
     
 16)	Now we will combine both the tables data and load into Presentation layer in Datawarehouse which can be used for creating semantic models.
+
+
+
+<img width="975" height="483" alt="image" src="https://github.com/user-attachments/assets/6a4fcb22-adb1-4bb4-9169-23431f7ae03c" />
+
 
  
 17)	Create a Stored Procedure metadata.insert_pres_log using presentation table and this to dataflow activity:
@@ -157,18 +167,34 @@ CURRENT_TIMESTAMP as processed_datetime
 from dbo.pres_nyc_taxi_data;
 ```
 
+
+<img width="975" height="478" alt="image" src="https://github.com/user-attachments/assets/7e1c6da5-f8fe-4c5f-88c4-35bc903454e4" />
+
+
+
+
+
 18)	Create an orchestration pipeline to invoke both the staging pipeline and presentation pipeline to run one after the other.
 
 
-19)	Replace Dataflow Gen2 activity with stored procedure to demonstrate how stored procedure is more efficient.
-    
-20)	Expose the data from warehouse and build semantic model to create visualizations in Power BI.
- 
+<img width="975" height="481" alt="image" src="https://github.com/user-attachments/assets/04ca696b-0b73-470b-b881-a3e6db4becf9" />
 
 
-21)	Now replace the dataflow in (pres_nyc_dataprocessing_pl) pipeline with stored procedure to increase the efficiency.
+
+### **<ins>PowerBI</ins>**
+   
+19)	Expose the data from warehouse and build semantic model to create visualizations in Power BI.
+
+<img width="975" height="485" alt="image" src="https://github.com/user-attachments/assets/4b4e798d-0246-4d1b-8a59-ec87882081a3" />
+
+
     
-22)	Create a Stored Procedure (dbo.orchestration_presentation) in the Data Warehouse using the following code:
+### **<ins>Orchestrate through stored procedure</ins>**
+
+
+20)	Now replace the dataflow in (pres_nyc_dataprocessing_pl) pipeline with stored procedure to increase the efficiency.
+    
+21)	Create a Stored Procedure (dbo.orchestration_presentation) in the Data Warehouse using the following code:
 
 ```
 CREATE PROCEDURE dbo.orchestration_presentation
@@ -203,10 +229,16 @@ INSERT INTO dbo.pres_nyc_taxi_data
     on nty.PULocationID = lu1.LocationID
     left join staging.taxi_zone_lookup lu2
     on nty.DOLocationID = lu2.LocationID;
+
 ```
 
+<img width="975" height="480" alt="image" src="https://github.com/user-attachments/assets/5f68c5f3-bc12-49e2-bf43-fa82bd9e9bfa" />
 
-23)	Go to monitor section to view the history, status and other details of pipeline.
+
+
+### **<ins>Monitoring</ins>**
+
+22)	Go to monitor section to view the history, status and other details of pipeline.
 
 
 <img width="975" height="383" alt="image" src="https://github.com/user-attachments/assets/52990c2a-a0b2-4e94-a36c-a68b5e6517b2" />
