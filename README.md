@@ -12,7 +12,7 @@
 
 In this project we will orchestrate the movement of NYC Taxi Trips raw data, starting from landing data into lakehouse to creating semantic models and visualizations using cleaned, transformed data from data warehouse presentation layer.
 
-**Dataset is from nyc.gov and includes the following fields:** pickup and drop-off dates/times, pickup and drop-off locations, trip distances, itemized fares, rate types, payment types, and driver-reported passenger counts (check data dictionary for more details).
+**Dataset is from nyc.gov and includes the following fields:** pickup and drop-off dates/times, pickup and drop-off locations, trip distances, itemized fares, rate types, payment types, and driver-reported passenger counts (see data dictionary for more details).
 
 
 ### <ins>Architecture</ins>
@@ -23,7 +23,7 @@ In this project we will orchestrate the movement of NYC Taxi Trips raw data, sta
 
 ---
 
-### <ins>Project Details (step-by-step)</ins>
+### <ins>Project Details</ins>(step-by-step)
 
 1)	Load NYC Taxi Trip records data and nyc_lookup_table data into Lakehouse which acts as storage layer for landing the raw data in the parquet format with each file containing 1 month of data.
 
