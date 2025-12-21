@@ -60,7 +60,9 @@ DELETE from staging.nyc_taxi_data WHERE tpep_pickup_datetime <@startdate or tpep
    
 7)	Add set variables activity and create dynamic end date v_end_date using addToTime function: 
 
-```@addToTime(concat(variables('v_file_date'),'-01'), 1,'month')```
+```
+@addToTime(concat(variables('v_file_date'),'-01'), 1,'month')
+```
 
    i) Set the end date in stored procedure as v_end_date
 
