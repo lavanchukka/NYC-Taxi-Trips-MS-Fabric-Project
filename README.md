@@ -23,7 +23,7 @@ In this project we will orchestrate the movement of NYC Taxi Trips raw data, sta
 
 ---
 
-### <ins>Project Details</ins>(step-by-step)
+### <ins>Implementation Steps</ins>
 
 1)	Load NYC Taxi Trip records data and nyc_lookup_table data into Lakehouse which acts as storage layer for landing the raw data in the parquet format with each file containing 1 month of data.
 
