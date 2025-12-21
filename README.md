@@ -1,4 +1,12 @@
 # NYC Taxi Trips-Fabric Project
+![MSFabric](https://img.shields.io/badge/MS%20Fabric-Data%20Engineer-lightgreen)
+![MSFabric](https://img.shields.io/badge/Dataflows%20Gen2-blue)
+![MSFabric](https://img.shields.io/badge/Pipelines-grey)
+![MSFabric](https://img.shields.io/badge/Lakehouse-blue)
+![MSFabric](https://img.shields.io/badge/Stored%20Procedures-grey)
+![MSFabric](https://img.shields.io/badge/Data%20Warehouse-blue)
+![MSFabric](https://img.shields.io/badge/Semantic%20model-grey)
+![MSFabric](https://img.shields.io/badge/PowerBI-yellow)
 
 ### <ins>Overview</ins>
 
@@ -13,13 +21,13 @@ In this project we will orchestrate the movement of NYC Taxi Trips raw data, sta
 
 <img width="1593" height="594" alt="NYC Taxi Data Architecture" src="https://github.com/user-attachments/assets/4a1d1a14-ee67-4066-ad6e-7ef8f468a9d7" />
 
-
+---
 
 ### <ins>Project Details (step-by-step)</ins>
 
 1)	Load NYC Taxi Trip records data and nyc_lookup_table data into Lakehouse which acts as storage layer for landing the raw data in the parquet format with each file containing 1 month of data.
 
-### **<ins>Staging layer</ins>**
+### **i) <ins>Staging layer</ins>**
 
 2)	Create a pipeline staging_lookup_table and use Data Factory copy data activity, configure up the source (Lakehouse) and sink (Warehouse) settings and ingest lookup table data into staging layer schema as table in Datawarehouse.
 
@@ -113,7 +121,7 @@ order by latest_processed_pickup Desc;
 13)	Next use Dataflow gen2 to perform cleansing and transformations on taxi zone lookup and taxi data tables from staging layer.
     
 
-### **<ins>Presentation Layer</ins>**
+### **ii) <ins>Presentation Layer</ins>**
    	
     
 15)	Create a dbo.pres_nyc_taxi_data table:
@@ -181,7 +189,7 @@ from dbo.pres_nyc_taxi_data;
 
 
 
-### **<ins>PowerBI</ins>**
+### **iii) <ins>PowerBI</ins>**
    
 19)	Expose the data from warehouse and build semantic model to create visualizations in Power BI.
 
@@ -189,7 +197,7 @@ from dbo.pres_nyc_taxi_data;
 
 
     
-### **<ins>Replace dataflow with stored procedure</ins>**
+### **iv) <ins>Replace dataflow with stored procedure</ins>**
 
 
 20)	Now replace the dataflow in (pres_nyc_dataprocessing_pl) pipeline with stored procedure to increase the efficiency.
@@ -236,7 +244,7 @@ INSERT INTO dbo.pres_nyc_taxi_data
 
 
 
-### **<ins>Monitoring</ins>**
+### **v) <ins>Monitoring</ins>**
 
 22)	Go to monitor section to view the history, status and other details of pipeline.
 
