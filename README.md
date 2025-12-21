@@ -21,13 +21,15 @@ In this project we will perform the following tasks:
 
 1)	Load NYC Taxi Trip records data and nyc_lookup_table data into Lakehouse which acts as storage layer for landing the raw data in the parquet format with each file containing 1 month of data.
 
-Staging layer
+### **Staging layer**
 
 2)	Create a pipeline staging_lookup_table and use Data Factory copy data activity, configure up the source (Lakehouse) and sink (Warehouse) settings and ingest lookup table data into staging layer schema as table in Datawarehouse.
 
 3)	Next, create a new pipeline staging_nyc_data, use copy data activity and configure source (Lakehouse), and sink (Warehouse) settings, load only Jan month parquet file and create a dynamic path, so create a variable for the date (V_file_date) using concate function in source and write the following pipeline expression:
+   
 
 @concat('yellow_tripdata_', variables('v_file_date'), '.parquet')
+
 
 , now in sink configure and load the file into data warehouse as new table under staging schema(nyc_taxi_data).
 
